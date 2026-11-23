@@ -19,6 +19,6 @@
     "nodemon": "^2.0.22"
   },
   "devDependencies": {
-    "http-proxy-middleware": "^2.0.6"
+    "http-proxy-middleware": "^4.2.2"
   }
 }

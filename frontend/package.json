@@ -23,7 +23,7 @@
     "axios": "^1.3.4",
     "firebase": "^9.19.1",
     "html-react-parser": "^3.0.15",
-    "javascript-time-ago": "^2.5.9",
+    "javascript-time-ago": "^2.6.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-quill": "^2.0.0",

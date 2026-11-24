@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../feature/userSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import { DEMO_MODE, endDemoSession } from "../demo/demoMode";
 import { Link } from "react-router-dom";
 import { setSearchQuery } from "../feature/searchSlice";
 
@@ -66,6 +67,11 @@ function KiinectHeader() {
   };
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to log out")) {
+      if (DEMO_MODE) {
+        endDemoSession();
+        dispatch(logout());
+        return;
+      }
       signOut(auth)
         .then(() => {
           dispatch(logout());

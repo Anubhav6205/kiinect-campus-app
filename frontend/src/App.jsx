@@ -19,6 +19,8 @@ import Transport from "./components/sidebar/Transport";
 import axios from "axios";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import NotDeveloped from "./components/NotDeveloped";
+import { DEMO_MODE, getDemoSession } from "./demo/demoMode";
+import DemoBanner from "./demo/DemoBanner";
 
 function App() {
   const postUserData = async (name, email, url) => {
@@ -58,6 +60,16 @@ function App() {
     // This function is used to listen for changes in the authentication state of the Firebase app.
     //whenever auth is changed , function is executed
 
+    if (DEMO_MODE) {
+      const demoUser = getDemoSession();
+      if (demoUser) {
+        dispatch(login(demoUser));
+        postUserData(demoUser.userName, demoUser.email, demoUser.photo);
+      }
+      setIsLoading(false);
+      return;
+    }
+
     onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
         dispatch(
@@ -90,6 +102,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        {DEMO_MODE && <DemoBanner />}
         {user ? (
           <div className="App">
             {/* <h1>This is for testing</h1> */}

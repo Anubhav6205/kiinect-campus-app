@@ -338,3 +338,11 @@ body {
 
 
 }
+.demo-note {
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #5c4400;
+}
+.demo-note p {
+  margin: 0 0 8px;
+}

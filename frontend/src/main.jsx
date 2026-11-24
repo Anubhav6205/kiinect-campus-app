@@ -8,6 +8,10 @@ import en from "javascript-time-ago/locale/en.json";
 import { Provider } from "react-redux";
 
 import store from "./app/store";
+import { DEMO_MODE } from "./demo/demoMode";
+import { installDemoApi } from "./demo/demoApi";
+
+if (DEMO_MODE) installDemoApi();
 
 TimeAgo.addDefaultLocale(en);
 
